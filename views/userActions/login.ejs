@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <title>Markdown blogger</title>
+  </head>
+  <body>
+    <%- include('../partials/navbar') %>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+          <div class="card card-signin my-5">
+            <div class="card-body">
+              <h3 class="card-title text-center">Login</h3>
+              <% if (messages.error) { %> <%= messages.error %> <% } %>
+              <form action="/user/login" method="post" class="form-signin">
+                <div class="form-label-group mb-4">
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form-control"
+                    placeholder="Email"
+                    required
+                    autofocus
+                  />
+                </div>
+                <div class="form-label-group mb-4">
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    class="form-control"
+                    placeholder="Password"
+                    required
+                  />
+                </div>
+                <button
+                  type="submit"
+                  class="btn btn-lg btn-primary btn-block text-uppercase"
+                >
+                  Login
+                </button>
+              </form>
+            </div>
+            <div class="card-footer text-center">
+              <a href="/user/register">Register</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

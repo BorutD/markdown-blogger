@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <title>Markdown blogger</title>
+  </head>
+  <body>
+    <%- include('../partials/navbar') %>
+    <div class="container">
+        
+        <% if (user) { %>
+          <h5>Hello <%= user.username %></h5>
+          <a href="/articles/new" class="btn btn-primary">New Article</a>
+      <% } %>
+
+      <% if (articles.length == 0) { %>
+        <h3 class="text-center">No articles :(</h3>
+      <% } else { %>
+        <% articles.forEach(article => { %>
+          <div class="card mt-4">
+            <div class="card-body">
+              <h5 class="card-title"><%= article.title %></h4>
+              <h6 class="card-subtitle mb-2 text-muted">By <%= article.author %></h5>
+              <p class="card-text"><%= article.description %></p>
+              <a href="articles/<%= article.slug %>" class="btn btn-info">Read More</a>
+  
+              <% if (user && article.author == user.username) { %>
+                <a href="articles/edit/<%= article.id %>" class="btn btn-warning">Edit</a>
+              <% } %>
+            </div>
+          </div>
+        <% }) %>
+      <% } %>
+    </div>
+  </body>
+</html>
